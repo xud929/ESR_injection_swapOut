@@ -1,0 +1,152 @@
+\documentclass{article}
+\usepackage{booktabs}
+\usepackage{upgreek}
+
+\usepackage[english]{babel}
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\title{Study of Electron Transverse Emittance Mismatch in the EIC Swap-Out Injection Scheme}
+\author{Derong Xu}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\textcolor{red}{Your abstract.}
+Just to follow up on our conversations this morning, we would like to understand the feasibility of the following two concepts:
+
+    Direct injection of 7-14 nC bunches from a 2-pass 5-GeV recirculator (2 x 2.5 GeV) into the ESR.  What are the possible emittances, momentum spread, bunch length at the ESR injection.
+    Direct injection of 7-14 nC bunches at 10 GeV (3 x 3.3 GeV) into the ESR.
+
+Assuming a racetrack tunnel with only one linac, we need to answer the following questions:
+
+    What is the minimum arc radius we need to obtain emittances acceptable for the ESR injection? -- Todd
+    What is the maximum bunch length we can obtain at injection and what is the minimum momentum spread? -- Todd
+    Can we do a swap-out injection at 5 and 10 GeV? Wha is the proton emittance increase per one such injection into the ESR? -- Derong
+    Can we accumulate 28 nC bunches in the ESR (4 x 7 nC) at 200 ms per injection? -- Derong
+    What are the ESR beam losses per injection? Where are these particles being lost? – TBD
+Erdong can provide bunch parameters after the LEBT and also after the first linac pass for 7 – 14 nC.
+\end{abstract}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+The Electron-Ion Collider (EIC) is designed to achieve a high peak luminosity of 
+$10^{34}~\mathrm{cm}^{-2}\mathrm{s}^{-1}$ through collisions of polarized electron and 
+proton beams. The Electron Storage Ring (ESR) is expected to 
+deliver high-charge electron bunches of up to $28~\mathrm{nC}$.
+The ESR lattice is engineered to provide a dynamic aperture of $10\sigma$ in all three 
+planes. Due to the limited polarization lifetime, frequent electron bunch replacement 
+is required. The swap-out injection scheme offers an efficient solution to meet these 
+demands, while accommodating the small dynamic aperture. The Rapid Cycling Synchrotron 
+(RCS) is responsible for electron accumulation, acceleration, and injection to the ESR.
+
+However, the design emittances of the RCS and ESR differ significantly. 
+In the RCS, the vertical emittance is nearly zero to suppress vertical intrinsic 
+spin resonances. In contrast, the ESR maintains a finite vertical emittance to 
+match the proton beam size at the interaction point (IP). 
+Although the electron beam can be manipulated during transport from the RCS to 
+the ESR, maintaining precise control over the resulting emittance is challenging.
+This emittance mismatch during electron injection can lead to proton emittance growth.
+
+An alternative injection scheme involves injecting electron bunches directly from the 
+LINAC into the ESR, eliminating the need for the RCS. This approach meets the Phase I 
+goals, where the ESR only needs to provide $5/10~\mathrm{GeV}$ electron bunches with 
+a maximum charge of $7~\mathrm{nC}$ \cite{EICMACReview202409:Sergei} . In Phase II, where a $28~\mathrm{nC}$ electron 
+bunch is required, multiple electron bunches can be injected into the same ESR bucket. 
+Off-momentum injection can be employed to minimize electron emittance blow-up, 
+making this accumulation scheme feasible. Our previous study indicates that 
+the accumulation scheme is a viable option \cite{xu:ipac2024-mopc72}.
+
+The electron bunch from the LINAC also differs from the ESR design value. 
+In this note, we apply the strong-strong simulation method to study proton 
+emittance growth during the swap-out injection for electron bunch charges of $7$, 
+$14$, and $28~\mathrm{nC}$, respectively. The electron injection emittance spans 
+a wide range to account for both LINAC and RCS cases. The accumulation scenario 
+with significant emittance mismatch will be revisited in future studies.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Method}
+To model the distribution evolution of both the electron and proton beams, 
+a self-consistent simulation is required. Accordingly, we employ 
+the strong-strong simulation method. The beam parameters used in the simulation 
+are presented in Table~\ref{tab:SimulationParameters}. 
+
+\begin{table}
+  \centering
+  \caption{Beam parameters used in strong-strong simulation. The columns ``Proton 
+  design'' and ``Electron design'' are directly taken from EIC-CDR 
+  \cite{willeke2021electron}. The ``Electron input'' is what we actually use in
+  the simulation. Without beam-beam interaction, the electron beam parameters
+  will evolve toward the ``Electron design'' parameter.
+  ``H'' stands for horizontal and ``V'' denotes vertical below.
+  Parameters marked in red as ``TBD'' indicate values that were scanned during 
+  the simulation.\\}
+  \begin{tabular}{lcccc}
+   \toprule
+    Parameter & Unit & Proton design & Electron design & Electron input\\
+    \hline
+    Circumference & $\mathrm{m}$ & $3834$ & $3834$ & $3834$ \\
+    Energy & $\mathrm{GeV}$ & $275$ & $10$ & $10$\\
+    Particles per bunch & $10^{11}$ & $0.688$ & $1.72$ & $1.72$\\
+    Half crossing angle & $\mathrm{mrad}$ & $12.5$ & $12.5$ & $12.5$\\
+    Crab cavity frequency & $\mathrm{MHz}$ & $200.0/400.0$ & $400.0$ & $400.0$\\
+    $\beta_x^*/\beta_y^*$ & $\mathrm{cm}$ & $80.0/7.20$ & $55.0/5.60$ & $55.0/5.60$\\
+    RMS emittance (H/V) & $\mathrm{nm\cdot rad}$ & $11.3/1.00$ & $20.4/1.6$ & \textcolor{red}{TBD}\\
+    RMS bunch size (H/V) & $\mathrm{\upmu m}$ & $95.0/8.5$ & $106/9.5$ & \textcolor{red}{TBD}\\
+    RMS bunch length & $\mathrm{cm}$ & $6.0$ & $0.7$ & $0.09$\\
+    RMS energy spread & $10^{-4}$ & $6.6$ & $5.5$ & $20.0$\\
+    Transverse fractional tune (H/V) & - & $0.228/0.210$ & $0.08/0.14$ & $0.08/0.14$\\
+    Synchrotron tune  & - & $-0.010$ & $-0.069$ & $-0.069$\\
+    Transverse damping time & turns & $\infty$ & $4000$ & $4000$\\
+    Longitudinal damping time & turns & $\infty$ & $2000$ & $2000$\\
+    Chromaticity (H/V) & - & $2/2$ & $1/1$ & $1/1$\\
+  \bottomrule
+  \end{tabular}
+  \label{tab:SimulationParameters}
+\end{table}
+
+The horizontal emittance of the electron beam is scanned from $5~\mathrm{nm}$ to 
+$23~\mathrm{nm}$ in steps of $2~\mathrm{nm}$. The vertical emittance is scanned 
+from $0.5~\mathrm{nm}$ to $5.0~\mathrm{nm}$, with a step size of $0.5~\mathrm{nm}$. 
+The injected electron bunches are assumed to match the ESR optics, and their initial 
+beam sizes are determined based on the scanned emittance and beam optics. 
+The initial proton beam follows a perfect Gaussian distribution and begins interacting 
+with the electron beam from the 1st turn. After $50,000$ turns, the electron bunch 
+is swapped out and replaced with a fresh one, allowing the HSR bunch to 
+continue interaction with the newly injected electron bunch.
+
+The strong-strong simulation is influenced by numerical noise, which varies based on 
+the model parameters. The chosen model parameters are listed in Table \ref{tab:model}.
+The ratio of macro particles is set equal to the ratio of bunch intensities, 
+following our previous study. To reduce computation time, we also reduce the 
+number of longitudinal slices and transverse grids.
+\begin{table}
+    \centering
+    \caption{Model parameters during the strong-strong simulation\\}
+    \begin{tabular}{lcc}
+    \toprule
+    Model parameter & Proton beam & Electron beam\\
+    \midrule
+    Number of macro particles & $512,000$ & $1,280,000$\\
+    Number of longitudinal slices & $11$ & $11$\\
+    Number of transverse grids & \multicolumn{2}{c}{$64\times 64$}\\
+    \bottomrule
+    \end{tabular}
+    \label{tab:model}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Result}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Discussion}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Summary}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{unsrt}
+\bibliography{reference}
+
+\end{document}
