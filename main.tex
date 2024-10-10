@@ -1,6 +1,7 @@
 \documentclass{article}
 \usepackage{booktabs}
 \usepackage{upgreek}
+\usepackage{enumerate}
 
 \usepackage[english]{babel}
 \usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
@@ -138,10 +139,65 @@ number of longitudinal slices and transverse grids.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Result}
+A typical tracking result is shown in Figure~\ref{fig:ssTrackingExample}.
+At 50,000-th turns, following the replacement of the electron bunch, a slight jump 
+in the proton vertical emittance is observed. This emittance jump must be 
+carefully controlled to remain small; otherwise, the flat hadron beam profile 
+may be compromised.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.99\textwidth]{pic/28nC_track/11_0.5.png}
+    \caption{Electron (top) and proton (bottom) emittance evolution in strong-strong simulation.}
+    \label{fig:ssTrackingExample}
+\end{figure}
+
+Figure~\ref{fig:protonEmittanceJump} presents the proton horizontal and vertical 
+emittance jumps for varying initial electron emittances and electron charges. 
+Different colors represent the percentage increase in emittance per injection.
+The emittance increase is calculated as follows:
+\begin{enumerate}[(1)]
+    \item The tracking data between 40,000 and 41,000 turns are averaged to obtain $\epsilon_1$
+    \item The tracking data between 90,000 and 91,000 turns are averaged to obtain $\epsilon_2$
+    \item The relative emittance growth per injection is normalized using
+    \begin{displaymath}
+    \frac{\Delta \epsilon}{\epsilon_0}=\frac{\epsilon_2-\epsilon_1}{\epsilon_0}
+    \end{displaymath}
+    where $\epsilon_0$ is the proton design value shown in \ref{tab:SimulationParameters}.
+\end{enumerate}
+
+From Figure~\ref{fig:protonEmittanceJump}, it is evident that the emittance jump is 
+negligible for electron charges of $7~\mathrm{nC}$ or $14~\mathrm{nC}$. 
+However, for $28~\mathrm{nC}$, with smaller injected 
+emittances (e.g. $\epsilon_x=5~\mathrm{nm},~\epsilon_y=0.5~\mathrm{nm}$), 
+the vertical emittance jump reaches as high as $9.2\%$ per injection, which is 
+unacceptably large. Increasing the injected horizontal or vertical electron emittance 
+helps reduce the emittance jump. When the injected electron emittance is matched to 
+the design values ($\epsilon_x\sim 20~\mathrm{nm},\epsilon_y\sim 2~\mathrm{nm}$), 
+the proton emittance jump is minimized.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.99\textwidth]{pic/07.png}
+    \includegraphics[width=0.99\textwidth]{pic/14.png}
+    \includegraphics[width=0.99\textwidth]{pic/28.png}
+    \caption{Relative proton emittance growth per injection. Empty blocks indicate that the simulation was terminated accidentally, resulting in insufficient tracking data.}
+    \label{fig:protonEmittanceJump}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discussion}
+In addition to the emittance jump during the swap-out process,
+there is a slow vertical emittance decrease at $7~\mathrm{nC}$
+or $14~\mathrm{nC}$. This is quite different from 
+$28~\mathrm{nC}$, where both horizontal and vertical growth
+rate are both positive.
 
+\begin{figure}
+    \centering
+    \includegraphics[width=0.99\textwidth]{pic/}
+    \caption{Caption}
+    \label{fig:enter-label}
+\end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Summary}
 
