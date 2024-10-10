@@ -16,20 +16,11 @@
 \maketitle
 
 \begin{abstract}
-\textcolor{red}{Your abstract.}
-Just to follow up on our conversations this morning, we would like to understand the feasibility of the following two concepts:
-
-    Direct injection of 7-14 nC bunches from a 2-pass 5-GeV recirculator (2 x 2.5 GeV) into the ESR.  What are the possible emittances, momentum spread, bunch length at the ESR injection.
-    Direct injection of 7-14 nC bunches at 10 GeV (3 x 3.3 GeV) into the ESR.
-
-Assuming a racetrack tunnel with only one linac, we need to answer the following questions:
-
-    What is the minimum arc radius we need to obtain emittances acceptable for the ESR injection? -- Todd
-    What is the maximum bunch length we can obtain at injection and what is the minimum momentum spread? -- Todd
-    Can we do a swap-out injection at 5 and 10 GeV? Wha is the proton emittance increase per one such injection into the ESR? -- Derong
-    Can we accumulate 28 nC bunches in the ESR (4 x 7 nC) at 200 ms per injection? -- Derong
-    What are the ESR beam losses per injection? Where are these particles being lost? – TBD
-Erdong can provide bunch parameters after the LEBT and also after the first linac pass for 7 – 14 nC.
+This study examines the effect of electron emittance mismatch 
+on proton emittance growth in the EIC swap-out injection. 
+Strong-strong simulations show negligible growth for electron 
+charge of 7 and 14 nC, but significant growth at 28 nC 
+when electron emittance is much smaller than design values.
 \end{abstract}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
@@ -186,21 +177,86 @@ the proton emittance jump is minimized.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discussion}
-In addition to the emittance jump during the swap-out process,
-there is a slow vertical emittance decrease at $7~\mathrm{nC}$
-or $14~\mathrm{nC}$. This is quite different from 
-$28~\mathrm{nC}$, where both horizontal and vertical growth
-rate are both positive.
+In addition to the emittance jump observed during the swap-out 
+process, there is a gradual vertical emittance decrease at 
+$7 ~\mathrm{nC}$ or $14~\mathrm{nC}$. This behavior 
+contrasts with the case of $28~\mathrm{nC}$, where both 
+horizontal and vertical growth rates are positive.
+
+Figure~\ref{fig:compareCharge} compares the emittance tracking
+result for different electron charge. The emittance growth 
+rate is fitted by last $30\%$ tracking data, which is $30,000$
+turns. As shown in this figure, the proton vertical growth
+rate is negative for $7~\mathrm{nC}$ or $14~\mathrm{nC}$.
+
+One possible explanation is that the beam-beam kick is too 
+weak, and the tracking duration is not long enough for the 
+proton beam distribution to reach equilibrium. Another factor 
+could be that the growth rate in the simulation is sensitive 
+to the model parameters, as we also observed in a previous 
+study regarding the impact of numerical noise on proton 
+emittance growth in strong-strong simulations \cite{xu:beamDynamicsWorkshop}. 
+
+Figure~\ref{fig:compareModel} presents the strong-strong 
+tracking results using different model parameters. 
+The beam parameters are set according to the EIC design 
+values listed in Table~\ref{tab:SimulationParameters}
+Models A, B, and C are detailed in Tables~\ref{tab:model},
+,\ref{tab:modelB}, and \ref{tab:modelC}, respectively.
+The results clearly demonstrate that the proton growth rate 
+in strong-strong simulations is dependent on the model 
+parameters, with the vertical growth rates varying from 
+negative to positive.
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.99\textwidth]{pic/}
-    \caption{Caption}
-    \label{fig:enter-label}
+    \includegraphics[width=0.99\textwidth]{pic/compareCharge.png}
+    \caption{The vertical emittance growth rate of proton beam are negative for $7~\mathrm{nC}$ or $14~\mathrm{nC}$.}
+    \label{fig:compareCharge}
 \end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.99\textwidth]{pic/compareModel.png}
+    \caption{The vertical emittance growth rate in strong-strong simulation depends on model parameters. Models A, B, and C are detailed in Tables~\ref{tab:model},
+,\ref{tab:modelB}, and \ref{tab:modelC}, respectively.}
+    \label{fig:compareModel}
+\end{figure}
+
+\begin{table}
+    \centering
+    \caption{Model parameter B in Figure~\ref{fig:compareModel}.\\}
+    \begin{tabular}{lcc}
+    \toprule
+    Model parameter & Proton beam & Electron beam\\
+    \midrule
+    Number of macro particles & $1,024,000$ & $2,560,000$\\
+    Number of longitudinal slices & $15$ & $15$\\
+    Number of transverse grids & \multicolumn{2}{c}{$128\times 128$}\\
+    \bottomrule
+    \end{tabular}
+    \label{tab:modelB}
+\end{table}
+
+\begin{table}
+    \centering
+    \caption{Model parameter C in Figure~\ref{fig:compareModel}.\\}
+    \begin{tabular}{lcc}
+    \toprule
+    Model parameter & Proton beam & Electron beam\\
+    \midrule
+    Number of macro particles & $2,048,000$ & $1,024,000$\\
+    Number of longitudinal slices & $7$ & $21$\\
+    Number of transverse grids & \multicolumn{2}{c}{$128\times 128$}\\
+    \bottomrule
+    \end{tabular}
+    \label{tab:modelC}
+\end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Summary}
-
+Proton emittance growth in the EIC swap-out injection is small for 7 and 14 nC but large for 28 nC when the electron emittance is mismatched. 
+Matching the emittance to the ESR design reduces this growth.
+The growth rate also depends on the model parameters but is less relevant to this study.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \bibliographystyle{unsrt}
 \bibliography{reference}
